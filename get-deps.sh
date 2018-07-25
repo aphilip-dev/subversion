@@ -25,7 +25,7 @@
 
 APR=apr-1.4.5
 APR_UTIL=apr-util-1.3.12
-NEON=neon-0.29.6
+NEON=neon-0.30.2
 SERF=serf-0.7.2
 ZLIB=zlib-1.2.8
 SQLITE_VERSION=3.7.6.3
@@ -71,12 +71,14 @@ get_apr() {
 
 get_neon() {
     cd $TEMPDIR
-    $HTTP_FETCH http://webdav.org/neon/$NEON.tar.gz
-    cd $BASEDIR
+    #$HTTP_FETCH http://webdav.org/neon/$NEON.tar.gz
+    #$HTTP_FETCH wget https://fossies.org/linux/www/${NEON}.tar.gz
+    git clone https://github.com/aphilip-dev/neon.git $BASEDIR/neon
+    cd $BASEDIR/neon
 
-    gzip  -dc $TEMPDIR/$NEON.tar.gz | tar -xf -
+    #gzip  -dc $TEMPDIR/$NEON.tar.gz | tar -xf -
 
-    mv $NEON neon
+    #mv $NEON neon
 }
 
 get_serf() {
